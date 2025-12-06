@@ -1,0 +1,129 @@
+====================
+Player: 2
+Date: Sun Dec 07 00:12:59 2025
+Total Score: 4
+Total Questions Asked: 10
+Correct Questions:
+Q: What is H2O commonly known as?
+1. Oxygen
+2. Water
+3. Hydrogen
+4. Salt
+Correct Answer: 2
+Incorrect Questions:
+Q: Which of these is NOT a state of matter?
+1. Solid 2. Liquid 3. Gas 4. Light
+Correct Answer: 4
+Q: Which scientist discovered gravity?
+1. Newton 2. Einstein 3. Tesla 4. Bohr
+Correct Answer: 1
+Q: What is the largest organ of the human body?
+1. Heart 2. Brain 3. Skin 4. Liver
+Correct Answer: 3
+Q: Which organ pumps blood?
+1. Brain 2. Lungs 3. Heart 4. Kidneys
+Correct Answer: 3
+Q: Which is the hottest planet?
+1. Venus 2. Earth 3. Mercury 4. Mars
+Correct Answer: 1
+Q: What is the hardest natural substance?
+1. Diamond 2. Gold 3. Iron 4. Copper
+Correct Answer: 1
+====================
+
+====================
+Player: sherry
+Date: Sun Dec 07 00:18:52 2025
+Total Score: 1
+Total Questions Asked: 10
+Correct Questions:
+Q: Which scientist discovered gravity?
+1. Newton
+2. Einstein
+3. Tesla
+4. Bohr
+Correct Answer: 1
+Incorrect Questions:
+Q: DNA is found in which part of the cell?
+1. Ribosome 2. Nucleus 3. Cell membrane 4. Vacuole
+Correct Answer: 2
+Q: Which device measures temperature?
+1. Barometer 2. Thermometer 3. Hygrometer 4. Altimeter
+Correct Answer: 2
+Q: Sound cannot travel through?
+1. Air 2. Water 3. Solid 4. Vacuum
+Correct Answer: 4
+Q: What force pulls objects toward Earth?
+1. Friction 2. Electricity 3. Gravity 4. Magnetism
+Correct Answer: 3
+Q: How many bones does an adult human have?
+1. 106 2. 206 3. 306 4. 406
+Correct Answer: 2
+Q: What is the basic unit of life?
+1. Atom 2. Cell 3. Organ 4. Tissue
+Correct Answer: 2
+Q: What is H2O commonly known as?
+1. Oxygen 2. Water 3. Hydrogen 4. Salt
+Correct Answer: 2
+Q: What is the main function of red blood cells?
+1. Fight infection 2. Carry oxygen 3. Digest food 4. Store energy
+Correct Answer: 2
+Q: Which gas is most abundant in the atmosphere?
+1. Oxygen 2. Nitrogen 3. Hydrogen 4. Argon
+Correct Answer: 2
+====================
+
+====================
+Player: shery
+Date: Sun Dec 07 00:22:51 2025
+Total Score: 5
+Total Questions Asked: 10
+Correct Questions:
+Q: What do bees collect from flowers?
+1. Pollen
+2. Soil
+3. Leaves
+4. Seeds
+Correct Answer: 1
+Q: What is the boiling point of water?
+1. 100C
+2. 50C
+3. 150C
+4. 25C
+Correct Answer: 1
+Q: Which is the hottest planet?
+1. Venus
+2. Earth
+3. Mercury
+4. Mars
+Correct Answer: 1
+Q: What is the freezing point of water?
+1. 0°C
+2. 10°C
+3. 50°C
+4. –10°C
+Correct Answer: 1
+Q: What is the hardest natural substance?
+1. Diamond
+2. Gold
+3. Iron
+4. Copper
+Correct Answer: 1
+Incorrect Questions:
+Q: The Earth rotates on its?
+1. Orbit 2. Core 3. Axis 4. Mantle
+Correct Answer: 3
+Q: Which organ filters blood?
+1. Heart 2. Kidneys 3. Lungs 4. Stomach
+Correct Answer: 2
+Q: Which organ helps you smell?
+1. Ear 2. Nose 3. Eye 4. Skin
+Correct Answer: 2
+Q: What is the largest organ of the human body?
+1. Heart 2. Brain 3. Skin 4. Liver
+Correct Answer: 3
+Q: Which vitamin comes from sunlight?
+1. Vitamin A 2. Vitamin C 3. Vitamin D 4. Vitamin K
+Correct Answer: 3
+====================
+

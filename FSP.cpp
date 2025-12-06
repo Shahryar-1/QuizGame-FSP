@@ -20,6 +20,7 @@ struct MCQ {
 // ----------------------
 int game(int);
 int highscore(int);
+int review(int);
 
 void science(int);
 void sports(int);
@@ -52,9 +53,32 @@ int main()
     return 0;
 }
 
-// ----------------------
+//=======================
+//====Review Questions===
+//=======================
+
+int review(int x)
+{
+    ifstream file("quizlog.txt");
+
+    if(!file) 
+    {
+        cout << "File not found!\n";
+        return 0;
+    }
+
+    string line;
+     while(getline(file, line)) // read each line
+    {
+        cout << line << endl; 
+    }
+    file.close();
+    return 0;
+}
+
+//=======================
 // HIGH SCORE FUNCTION
-// ----------------------
+//======================= 
 
 int highscore(int x)
 {
@@ -118,6 +142,7 @@ int game(int x)
 // ----------------------
 // SCIENCE CATEGORY FUNCTION
 // ----------------------
+
 void science(int x)
 {
     int difficulty;
@@ -133,7 +158,10 @@ void science(int x)
     const int MAX = 100;
     MCQ questions[MAX];
     MCQ incorrect[MAX];
-    int count = 0, wrongcount = 0;
+    MCQ correct[MAX];
+    int count = 0;
+    int wrongcount = 0;
+    int rightcount = 0;
 
     ifstream file("science.txt");
     if(!file)
@@ -179,10 +207,10 @@ void science(int x)
     int score = 0;
     bool usedIndex[MAX] = {false};
 
-      bool usedReplace  = false;
-      bool usedSkip = false;
-      bool used5050 = false;
-      bool usedExtraTime = false;
+    bool usedReplace  = false;
+    bool usedSkip = false;
+    bool used5050 = false;
+    bool usedExtraTime = false;
 
     for(int i = 0; i < totalAsked; i++)
     {
@@ -195,7 +223,6 @@ void science(int x)
 
         MCQ q = questions[index];
         int secondsAllowed = 10;
-
         time_t questionStart = time(0);
 
         cout << "\nQ" << i+1 << " : " << q.question << "\n";
@@ -206,97 +233,71 @@ void science(int x)
         cout << "\nYou have 10 seconds.\n";
 
         cout << "\n--- Lifelines (One Chance) ---\n";
+        if(!usedReplace)   cout << "0. Replace question\n";
+        if(!usedSkip)      cout << "5. Skip without penalty\n";
+        if(!used5050)      cout << "6. 50-50\n";
+        if(!usedExtraTime) cout << "7. Extra 10 seconds\n";
 
-        if(!usedReplace)   
-            cout << "0. Replace question\n";
-        if(!usedSkip)      
-            cout << "5. Skip without penalty\n";
-        if(!used5050)      
-            cout << "6. 50-50\n";
-        if(!usedExtraTime) 
-            cout << "7. Extra 10 seconds\n";
-        
-            cout << "Your answer: ";
-
+        cout << "Your answer: ";
         int ans;
         cin >> ans;
 
-// ---------------------
-//      Lifelines
-// ---------------------
-
-// Replace question
-        if(ans == 0)
+        // --------------------- Lifelines ---------------------
+        if(ans == 0) // Replace question
         {
             if(usedReplace) 
             {
                 cout << "You already used this lifeline!\n";
-                continue; // question will count as normal, don't decrement i
-            }
-
-                usedReplace = true;
-                usedIndex[index] = false;
-                i--; // re-ask a new question
                 continue;
+            }
+            usedReplace = true;
+            usedIndex[index] = false;
+            i--;
+            continue;
         }
 
-
-// Skip question
-        if(ans == 5)
+        if(ans == 5) // Skip question
         {
             if(usedSkip) 
             {
                 cout << "You already used Skip!\n";
-                continue; // skip counts as asked, don't decrement
-            }
-                usedSkip = true;
-                cout << "Question skipped.\n";
                 continue;
+            }
+            usedSkip = true;
+            cout << "Question skipped.\n";
+            continue;
         }
 
-// 50-50
-        if(ans == 6)
+        if(ans == 6) // 50-50
         {
             if(used5050) 
             {
                 cout << "Already used!\n";
                 continue;
             }
-                used5050 = true;
+            used5050 = true;
 
-                 if(q.correct == 1)
+            if(q.correct == 1 || q.correct == 3)
                 cout << "1. " << q.A << "\n3. " << q.C << "\n";
-
-                else if(q.correct == 2)
+            else
                 cout << "2. " << q.B << "\n4. " << q.D << "\n";
 
-                else if(q.correct == 3)
-                cout << "1. " << q.A << "\n3. " << q.C << "\n";
-
-                else
-                cout << "2. " << q.B << "\n4. " << q.D << "\n";
-
-                cout<<"Your Answer: ";
-                cin >> ans;
+            cout << "Your Answer: ";
+            cin >> ans;
         }
 
-// Extra time
-        if(ans == 7)
+        if(ans == 7) // Extra time
         {
             if(usedExtraTime)
             {
                 cout << "Already used!\n";
                 continue;
             }
-                usedExtraTime = true;
-                secondsAllowed += 10;
+            usedExtraTime = true;
+            secondsAllowed += 10;
         }
 
-
-//==========================================
-//===============Timer======================
-//==========================================
-
+        // --------------------- Timer ---------------------
         time_t end = time(0);
         double taken = difftime(end, questionStart);
 
@@ -309,10 +310,11 @@ void science(int x)
             continue;
         }
 
-        // Result check
+        // --------------------- Result Check ---------------------
         if(ans == q.correct)
         {
             cout << "Correct!\n";
+            correct[rightcount++] = q;
             score++;
         }
         else
@@ -321,9 +323,8 @@ void science(int x)
             incorrect[wrongcount++] = q;
         }
     }
-    //======================================
-    //=============Results==================
-    //======================================
+
+    // --------------------- Results ---------------------
     cout << "\n====================\n";
     cout << "Your Score: " << score << "\n";
     cout << "Total Asked: " << totalAsked << "\n";
@@ -344,7 +345,68 @@ void science(int x)
             cout << "Correct: " << q.correct << "\n";
         }
     }
-}
+
+    //==============Review Quiz Option====================
+
+    cout<<"You want to see your Quiz: ";
+    int want;
+    cin >> want;
+
+    //====================================================
+    //===================== Logging ======================
+    //====================================================
+    if(want == 1)
+    {
+         ofstream logFile("quizlog.txt", ios::app);
+         if(logFile)
+        {
+            string playerName;
+            cout << "\nEnter your name for the log: ";
+            cin.ignore(); // clear newline
+            getline(cin, playerName);
+
+            time_t now = time(0);
+            string dt = ctime(&now); // includes newline
+
+            logFile << "====================\n";
+            logFile << "Player: " << playerName << "\n";
+            logFile << "Date: " << dt;
+            logFile << "Total Score: " << score << "\n";
+            logFile << "Total Questions Asked: " << totalAsked << "\n";
+
+            logFile << "Correct Questions:\n";
+            for(int i = 0; i < rightcount; i++)
+                {
+                    MCQ q = correct[i];
+                    logFile << "Q: " << q.question << "\n";
+                    logFile << "1. " << q.A << "\n";
+                    logFile << "2. " << q.B << "\n";
+                    logFile << "3. " << q.C << "\n";
+                    logFile << "4. " << q.D << "\n";
+                    logFile << "Correct Answer: " << q.correct << "\n";
+                }
+    
+
+                    logFile << "Incorrect Questions:\n";
+            for(int i = 0; i < wrongcount; i++)
+                {
+                    MCQ q = incorrect[i];
+                    logFile << "Q: " << q.question << "\n";
+                    logFile << "1. " << q.A << " 2. " << q.B << " 3. " << q.C << " 4. " << q.D << "\n";
+                    logFile << "Correct Answer: " << q.correct << "\n";
+                }
+
+                    logFile << "====================\n\n";
+                    logFile.close();
+
+                    cout << "\nYour quiz has been logged in quizlog.txt\n";
+            }   
+        }
+
+        review(want);
+    }
+
+    
 
 
 // ----------------------
