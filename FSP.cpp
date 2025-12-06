@@ -53,6 +53,30 @@ int main()
 }
 
 // ----------------------
+// HIGH SCORE FUNCTION
+// ----------------------
+
+int highscore(int x)
+{
+    ifstream file("highscore.txt");
+
+    if(!file) 
+    {
+        cout << "File not found!\n";
+        return 0;
+    }
+
+    string line;
+     while(getline(file, line)) // read each line
+    {
+        cout << line << endl; 
+    }
+    file.close();
+    return 0;
+
+}
+
+// ----------------------
 // GAME FUNCTION: Choose Category
 // ----------------------
 int game(int x)
@@ -106,7 +130,8 @@ void science(int x)
         return;
     }
 
-    switch(difficulty) {
+    switch(difficulty) 
+    {
         case 1: // Easy
         case 2: // Medium
         case 3: // Hard
@@ -260,4 +285,4 @@ void sports(int x) { cout << "Sports category coming soon!\n"; }
 void computer(int x) { cout << "Computer category coming soon!\n"; }
 void history(int x) { cout << "History category coming soon!\n"; }
 void iqlogic(int x) { cout << "IQ/Logic category coming soon!\n"; }
-int highscore(int x) { cout << "Highscore feature coming soon!\n"; return 0; }
+

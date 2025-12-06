@@ -1,0 +1,9 @@
+ NAME                SCORE
+------              --------
+Ali                    34
+Hassan                 32    
+Asad                   30      
+Saad                   45   
+Ammar                  12   
+Moeed                  45
+Sherry                 45
