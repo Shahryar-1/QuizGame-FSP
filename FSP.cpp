@@ -113,16 +113,20 @@ void science(int x)
         {
             const int MAX = 100;
             MCQ questions[MAX];
+            MCQ incorrect[MAX];
             int count = 0;
+            int wrongcount = 0;
 
             ifstream file("science.txt");
-            if(!file) {
+            if(!file) 
+            {
                 cout << "File not found!\n";
                 return;
             }
 
             string line;
-            while(getline(file, line) && count < MAX) {
+            while(getline(file, line) && count < MAX) 
+            {
                 stringstream ss(line);
 
                 getline(ss, questions[count].question, '|');
@@ -144,21 +148,28 @@ void science(int x)
             }
             file.close();
 
-            if(count == 0) {
+            if(count == 0)
+            {
                 cout << "No questions found for this difficulty!\n";
                 return;
             }
 
             srand(time(0));
+
             int totalAsked = 10;
             int score = 0;
             bool usedIndex[MAX] = {false};
 
-            for(int i = 0; i < totalAsked; i++) {
+            for(int i = 0; i < totalAsked; i++) 
+            {
                 int index;
-                do {
+                do 
+                {
+                    
                     index = rand() % count;
                 } while(usedIndex[index]);
+
+                time_t questionStart = time(0); // start timer for this question
 
                 usedIndex[index] = true;
 
@@ -175,26 +186,66 @@ void science(int x)
                 cout << "Your answer (0 to replace): ";
                 cin >> ans;
 
-                if(ans == 0) {
+                time_t questionEnd = time(0);
+                double secondsTaken = difftime(questionEnd, questionStart);
+
+               if(secondsTaken > 10) 
+               {
+               cout << "Time's up! You took " << secondsTaken << " seconds.\n";
+               usedIndex[index] = false; // question can be asked again
+               i--; // retry this question
+               score = score - 2; // penalty for timeout
+               continue;
+              }
+
+                if(ans == 0) 
+                {
                     cout << "Question Replaced\n";
                     usedIndex[index] = false;
                     i--;
                     continue;
                 }
 
-                if(ans == q.correct) {
+                if(ans == q.correct) 
+                {
                     cout << "Correct Answer\n";
                     score++;
-                } else {
+                } else 
+                {
+
                     cout << "Wrong Answer. Correct Option: " << q.correct << "\n";
+                    incorrect[wrongcount] = q;
+                    wrongcount++;
                 }
             }
 
             cout << "\n====================\n";
             cout << "Your Score: " << score << "\n";
             cout << "Total Asked Questions: " << totalAsked << "\n";
-            cout << "====================\n";
-
+         
+            
+            //Review Wrong Answers
+            cout<<"You want to know about your wrong answers? (1-Yes, 2-No): ";
+            int choice;
+            cin >> choice;
+            if(choice == 1) 
+            {
+                for(int i = 0; i < wrongcount; i++) 
+                {
+                    MCQ q = incorrect[i];
+                    cout << "\nQuestion: " << q.question << "\n";
+                    cout << "1. " << q.A << "\n";
+                    cout << "2. " << q.B << "\n";
+                    cout << "3. " << q.C << "\n";
+                    cout << "4. " << q.D << "\n";
+                    cout << "Correct Option: " << q.correct << "\n";
+                }
+            }
+            else
+            {
+                cout << "Thank you for playing!\n";
+                cout << "====================\n";
+            }
             break;
         }
         default:
