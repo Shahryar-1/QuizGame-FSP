@@ -1,7 +1,7 @@
 What is H2O commonly known as?|Oxygen|Water|Hydrogen|Salt|2|1
 Which planet is known as the Red Planet?|Venus|Earth|Mars|Jupiter|3|1
 What gas do plants release during photosynthesis?|Carbon dioxide|Oxygen|Nitrogen|Helium|2|1
-What is the boiling point of water?|100°C|50°C|150°C|25°C|1|1
+What is the boiling point of water?|100C|50C|150C|25C|1|1
 What is the largest organ of the human body?|Heart|Brain|Skin|Liver|3|1
 What is the basic unit of life?|Atom|Cell|Organ|Tissue|2|1
 Which device measures temperature?|Barometer|Thermometer|Hygrometer|Altimeter|2|1

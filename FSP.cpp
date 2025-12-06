@@ -130,153 +130,222 @@ void science(int x)
         return;
     }
 
-    switch(difficulty) 
+    const int MAX = 100;
+    MCQ questions[MAX];
+    MCQ incorrect[MAX];
+    int count = 0, wrongcount = 0;
+
+    ifstream file("science.txt");
+    if(!file)
     {
-        case 1: // Easy
-        case 2: // Medium
-        case 3: // Hard
+        cout << "File not found!\n";
+        return;
+    }
+
+    // Load questions
+    string line;
+    while(getline(file, line) && count < MAX)
+    {
+        stringstream ss(line);
+        getline(ss, questions[count].question, '|');
+        getline(ss, questions[count].A, '|');
+        getline(ss, questions[count].B, '|');
+        getline(ss, questions[count].C, '|');
+        getline(ss, questions[count].D, '|');
+
+        string correctStr;
+        getline(ss, correctStr, '|');
+        questions[count].correct = stoi(correctStr);
+
+        string diffStr;
+        getline(ss, diffStr, '|');
+
+        if(stoi(diffStr) != difficulty)
+            continue;
+
+        count++;
+    }
+    file.close();
+
+    if(count == 0)
+    {
+        cout << "No questions found for this difficulty!\n";
+        return;
+    }
+
+    srand(time(0));
+
+    int totalAsked = 10;
+    int score = 0;
+    bool usedIndex[MAX] = {false};
+
+      bool usedReplace  = false;
+      bool usedSkip = false;
+      bool used5050 = false;
+      bool usedExtraTime = false;
+
+    for(int i = 0; i < totalAsked; i++)
+    {
+        int index;
+        do {
+            index = rand() % count;
+        } while(usedIndex[index]);
+
+        usedIndex[index] = true;
+
+        MCQ q = questions[index];
+        int secondsAllowed = 10;
+
+        time_t questionStart = time(0);
+
+        cout << "\nQ" << i+1 << " : " << q.question << "\n";
+        cout << "1. " << q.A << "\n";
+        cout << "2. " << q.B << "\n";
+        cout << "3. " << q.C << "\n";
+        cout << "4. " << q.D << "\n";
+        cout << "\nYou have 10 seconds.\n";
+
+        cout << "\n--- Lifelines (One Chance) ---\n";
+
+        if(!usedReplace)   
+            cout << "0. Replace question\n";
+        if(!usedSkip)      
+            cout << "5. Skip without penalty\n";
+        if(!used5050)      
+            cout << "6. 50-50\n";
+        if(!usedExtraTime) 
+            cout << "7. Extra 10 seconds\n";
+        
+            cout << "Your answer: ";
+
+        int ans;
+        cin >> ans;
+
+// ---------------------
+//      Lifelines
+// ---------------------
+
+// Replace question
+        if(ans == 0)
         {
-            const int MAX = 100;
-            MCQ questions[MAX];
-            MCQ incorrect[MAX];
-            int count = 0;
-            int wrongcount = 0;
-
-            ifstream file("science.txt");
-            if(!file) 
+            if(usedReplace) 
             {
-                cout << "File not found!\n";
-                return;
+                cout << "You already used this lifeline!\n";
+                continue; // question will count as normal, don't decrement i
             }
 
-            string line;
-            while(getline(file, line) && count < MAX) 
-            {
-                stringstream ss(line);
-
-                getline(ss, questions[count].question, '|');
-                getline(ss, questions[count].A, '|');
-                getline(ss, questions[count].B, '|');
-                getline(ss, questions[count].C, '|');
-                getline(ss, questions[count].D, '|');
-
-                string correctStr;
-                getline(ss, correctStr, '|');
-                questions[count].correct = stoi(correctStr);
-
-                string diffStr;
-                getline(ss, diffStr, '|'); // assuming last field is difficulty: 1,2,3
-                if(stoi(diffStr) != difficulty) // filter by chosen difficulty
-                    continue;
-
-                count++;
-            }
-            file.close();
-
-            if(count == 0)
-            {
-                cout << "No questions found for this difficulty!\n";
-                return;
-            }
-
-            srand(time(0));
-
-            int totalAsked = 10;
-            int score = 0;
-            bool usedIndex[MAX] = {false};
-
-            for(int i = 0; i < totalAsked; i++) 
-            {
-                int index;
-                do 
-                {
-                    
-                    index = rand() % count;
-                } while(usedIndex[index]);
-
-                time_t questionStart = time(0); // start timer for this question
-
-                usedIndex[index] = true;
-
-                MCQ q = questions[index];
-
-                cout << "\nQ" << i + 1 << " : " << q.question << "\n";
-                cout << "1. " << q.A << "\n";
-                cout << "2. " << q.B << "\n";
-                cout << "3. " << q.C << "\n";
-                cout << "4. " << q.D << "\n";
-                cout << "0. Replaced this question\n";
-
-                int ans;
-                cout << "Your answer (0 to replace): ";
-                cin >> ans;
-
-                time_t questionEnd = time(0);
-                double secondsTaken = difftime(questionEnd, questionStart);
-
-               if(secondsTaken > 10) 
-               {
-               cout << "Time's up! You took " << secondsTaken << " seconds.\n";
-               usedIndex[index] = false; // question can be asked again
-               i--; // retry this question
-               score = score - 2; // penalty for timeout
-               continue;
-              }
-
-                if(ans == 0) 
-                {
-                    cout << "Question Replaced\n";
-                    usedIndex[index] = false;
-                    i--;
-                    continue;
-                }
-
-                if(ans == q.correct) 
-                {
-                    cout << "Correct Answer\n";
-                    score++;
-                } else 
-                {
-
-                    cout << "Wrong Answer. Correct Option: " << q.correct << "\n";
-                    incorrect[wrongcount] = q;
-                    wrongcount++;
-                }
-            }
-
-            cout << "\n====================\n";
-            cout << "Your Score: " << score << "\n";
-            cout << "Total Asked Questions: " << totalAsked << "\n";
-         
-            
-            //Review Wrong Answers
-            cout<<"You want to know about your wrong answers? (1-Yes, 2-No): ";
-            int choice;
-            cin >> choice;
-            if(choice == 1) 
-            {
-                for(int i = 0; i < wrongcount; i++) 
-                {
-                    MCQ q = incorrect[i];
-                    cout << "\nQuestion: " << q.question << "\n";
-                    cout << "1. " << q.A << "\n";
-                    cout << "2. " << q.B << "\n";
-                    cout << "3. " << q.C << "\n";
-                    cout << "4. " << q.D << "\n";
-                    cout << "Correct Option: " << q.correct << "\n";
-                }
-            }
-            else
-            {
-                cout << "Thank you for playing!\n";
-                cout << "====================\n";
-            }
-            break;
+                usedReplace = true;
+                usedIndex[index] = false;
+                i--; // re-ask a new question
+                continue;
         }
-        default:
-            cout << "Invalid difficulty!\n";
+
+
+// Skip question
+        if(ans == 5)
+        {
+            if(usedSkip) 
+            {
+                cout << "You already used Skip!\n";
+                continue; // skip counts as asked, don't decrement
+            }
+                usedSkip = true;
+                cout << "Question skipped.\n";
+                continue;
+        }
+
+// 50-50
+        if(ans == 6)
+        {
+            if(used5050) 
+            {
+                cout << "Already used!\n";
+                continue;
+            }
+                used5050 = true;
+
+                 if(q.correct == 1)
+                cout << "1. " << q.A << "\n3. " << q.C << "\n";
+
+                else if(q.correct == 2)
+                cout << "2. " << q.B << "\n4. " << q.D << "\n";
+
+                else if(q.correct == 3)
+                cout << "1. " << q.A << "\n3. " << q.C << "\n";
+
+                else
+                cout << "2. " << q.B << "\n4. " << q.D << "\n";
+
+                cout<<"Your Answer: ";
+                cin >> ans;
+        }
+
+// Extra time
+        if(ans == 7)
+        {
+            if(usedExtraTime)
+            {
+                cout << "Already used!\n";
+                continue;
+            }
+                usedExtraTime = true;
+                secondsAllowed += 10;
+        }
+
+
+//==========================================
+//===============Timer======================
+//==========================================
+
+        time_t end = time(0);
+        double taken = difftime(end, questionStart);
+
+        if(taken > secondsAllowed)
+        {
+            cout << "Time's up! You took " << taken << " seconds.\n";
+            score -= 2;
+            usedIndex[index] = false;
+            i--;
+            continue;
+        }
+
+        // Result check
+        if(ans == q.correct)
+        {
+            cout << "Correct!\n";
+            score++;
+        }
+        else
+        {
+            cout << "Wrong. Correct: " << q.correct << "\n";
+            incorrect[wrongcount++] = q;
+        }
+    }
+    //======================================
+    //=============Results==================
+    //======================================
+    cout << "\n====================\n";
+    cout << "Your Score: " << score << "\n";
+    cout << "Total Asked: " << totalAsked << "\n";
+
+    int choice;
+    cout << "\nView wrong answers? (1-Yes, 2-No): ";
+    cin >> choice;
+    if(choice == 1)
+    {
+        for(int i = 0; i < wrongcount; i++)
+        {
+            MCQ q = incorrect[i];
+            cout << "\nQuestion: " << q.question << "\n";
+            cout << "1. " << q.A << "\n";
+            cout << "2. " << q.B << "\n";
+            cout << "3. " << q.C << "\n";
+            cout << "4. " << q.D << "\n";
+            cout << "Correct: " << q.correct << "\n";
+        }
     }
 }
+
 
 // ----------------------
 // OTHER CATEGORY PLACEHOLDERS
