@@ -127,3 +127,45 @@ Q: Which vitamin comes from sunlight?
 Correct Answer: 3
 ====================
 
+====================
+Player: Sherry
+Date: Tue Dec 09 08:35:04 2025
+Total Score: 1
+Total Questions Asked: 10
+Correct Questions:
+Q: What is the chemical formula of salt?
+1. NaCl
+2. KCl
+3. CaCl2
+4. HCl
+Correct Answer: 1
+Incorrect Questions:
+Q: Which part of eye controls amount of light?
+1. Retina 2. Iris 3. Cornea 4. Lens
+Correct Answer: 2
+Q: Which gas is used in balloons?
+1. Oxygen 2. Helium 3. Nitrogen 4. Hydrogen
+Correct Answer: 2
+Q: Which planet has rings?
+1. Mars 2. Earth 3. Saturn 4. Venus
+Correct Answer: 3
+Q: The brain is protected by?
+1. Skin 2. Ribs 3. Skull 4. Spine
+Correct Answer: 3
+Q: Which wave does not require a medium?
+1. Sound 2. Water 3. Light 4. Seismic
+Correct Answer: 3
+Q: Which scientist proposed gravity?
+1. Einstein 2. Newton 3. Darwin 4. Tesla
+Correct Answer: 2
+Q: Which organ produces bile?
+1. Pancreas 2. Liver 3. Heart 4. Stomach
+Correct Answer: 2
+Q: What metal is used in electrical wiring?
+1. Aluminum 2. Copper 3. Iron 4. Lead
+Correct Answer: 2
+Q: What is the study of earthquakes?
+1. Meteorology 2. Geology 3. Seismology 4. Ecology
+Correct Answer: 3
+====================
+
