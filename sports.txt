@@ -1,0 +1,89 @@
+Who is known as the King of Football?|Lionel Messi|Cristiano Ronaldo|Pele|Maradona|3|1
+Which country hosts Wimbledon?|USA|France|UK|Australia|3|1
+How many players are in a cricket team?|9|10|11|12|3|1
+What is the national sport of Japan?|Cricket|Sumo Wrestling|Football|Tennis|2|1
+How long is a marathon?|42.195 km|21 km|10 km|50 km|1|1
+
+Which country won the 2019 Cricket World Cup?|India|Australia|England|New Zealand|3|1
+What is used to hit the ball in baseball?|Bat|Racket|Stick|Club|1|1
+How many points is a touchdown worth?|3|6|1|2|2|1
+Which sport uses a shuttlecock?|Tennis|Squash|Badminton|Table Tennis|3|1
+Where were the 2016 Olympics held?|London|Beijing|Rio de Janeiro|Tokyo|3|1
+
+What does FIFA stand for?|Federal International Football Association|Fédération Internationale de Football Association|Football International Federation Association|Football Institute Federation Association|2|1
+Which sport is known as the “king of sports”?|Basketball|Cricket|Football|Tennis|3|1
+How many rings are in the Olympic symbol?|4|5|6|7|2|1
+What is the highest score in a single over of cricket?|36|30|24|20|1|1
+Which country invented basketball?|USA|China|Brazil|Germany|1|1
+
+Which athlete is called Lightning Bolt?|Tyson Gay|Usain Bolt|Yohan Blake|Asafa Powell|2|1
+What surface is the French Open played on?|Grass|Clay|Hard|Carpet|2|1
+Which sport uses a bow and arrow?|Fencing|Shooting|Archery|Hockey|3|1
+What is the term for 3 goals in football?|Brace|Triple|Hat-trick|Treble|3|1
+Which equipment is used in golf?|Racket|Club|Stick|Bat|2|1
+
+How many players are on a basketball team on the court?|4|5|6|7|2|1
+Which country hosted FIFA World Cup 2022?|Brazil|Russia|Qatar|Germany|3|1
+What do swimmers wear on their eyes?|Helmet|Goggles|Mask|Shield|2|1
+Which sport uses wickets?|Football|Cricket|Hockey|Tennis|2|1
+Where is the NBA played?|Europe|Asia|North America|Africa|3|1
+
+Which sport is Michael Phelps famous for?|Running|Swimming|Cycling|Rowing|2|1
+What ball is used in table tennis?|Rubber ball|Ping Pong ball|Tennis ball|Plastic ball|2|1
+How long is a football match?|60 min|70 min|80 min|90 min|4|1
+What is the shape of a football?|Round|Oval|Diamond|Square|1|1
+Which sport uses a hoop?|Football|Basketball|Tennis|Hockey|2|1
+
+Who won the 2021 ICC T20 World Cup?|Pakistan|Australia|New Zealand|India|2|1
+What is the maximum score in a snooker frame?|147|200|100|300|1|1
+Which country is famous for the sport Kabaddi?|China|India|Japan|USA|2|1
+What is used to hit in hockey?|Bat|Stick|Racket|Club|2|1
+What is the weight of a cricket ball approx?|50g|100g|160g|300g|3|1
+
+Which sport uses a puck?|Tennis|Football|Ice Hockey|Cricket|3|1
+Where did cricket originate?|India|Australia|England|Pakistan|3|1
+What is the length of a cricket pitch?|10m|20.12m|30m|15m|2|1
+What is the term for 0 in tennis?|Zero|Love|Null|Blank|2|1
+How many sets to win a tennis match (men, Grand Slam)?|2|3|5|1|3|1
+
+Which country won the first FIFA World Cup?|Brazil|Germany|Uruguay|Argentina|3|1
+What is the biggest cricket stadium in the world?|Eden Gardens|MCG|Narendra Modi Stadium|Lords|3|1
+What sport uses the term “checkmate”?|Checkers|Chess|Carrom|Snooker|2|1
+How many players in a volleyball team?|4|5|6|7|3|1
+Which sport has a goalkeeper?|Cricket|Tennis|Football|Basketball|3|1
+
+What is the world’s oldest tennis tournament?|US Open|French Open|Wimbledon|Australian Open|3|1
+Which country invented table tennis?|USA|China|England|Japan|3|1
+What is the name of Pakistan’s hockey legend?|Wasim Akram|Jahangir Khan|Sohail Abbas|Imran Khan|3|1
+Which sport uses the term “slam dunk”?|Tennis|Basketball|Football|Golf|2|1
+What is the distance of a 100m race?|50m|100m|150m|200m|2|1
+
+Which sport does Roger Federer play?|Football|Tennis|Golf|Swimming|2|1
+Which sport is known as the gentleman’s game?|Cricket|Football|Tennis|Hockey|1|1
+Who is called the GOAT of Tennis?|Federer|Ronaldo|Jordan|Bradman|1|1
+What shape is a rugby ball?|Round|Square|Oval|Flat|3|1
+Which country dominates sumo wrestling?|India|Japan|Korea|China|2|1
+
+What is used to score in basketball?|Bat|Stick|Hoop|Racket|3|1
+Who is known as the Sultan of Swing?|Glenn McGrath|Shoaib Akhtar|Wasim Akram|Brett Lee|3|1
+How many minutes in one basketball quarter?|10|12|15|20|2|1
+What sport uses stumps?|Hockey|Cricket|Tennis|Football|2|1
+Which country hosts the Tour de France?|USA|France|Italy|Spain|2|1
+
+Who is the fastest man in the world?|Bolt|Lewis|Gatlin|Blake|1|1
+What sport uses a lane rope?|Cricket|Swimming|Tennis|Boxing|2|1
+Which sport is played on ice?|Volleyball|Ice Hockey|Badminton|Football|2|1
+Which sport uses gloves?|Football|Boxing|Tennis|Badminton|2|1
+Which game requires a cue stick?|Chess|Snooker|Tennis|Running|2|1
+
+Which country won the most Olympic medals?|USA|China|Russia|Germany|1|1
+What does NBA stand for?|National Basketball Association|National Baseball Association|North Ball Association|New Basketball Alliance|1|1
+Which sport uses the term “birdie”?|Cricket|Badminton|Golf|Swimming|3|1
+What is used to serve in badminton?|Racket|Bat|Stick|Club|1|1
+Which sport has offside rule?|Cricket|Football|Basketball|Tennis|2|1
+
+Where was the first modern Olympics held?|Paris|London|Athens|Rome|3|1
+Which sport uses a helmet and pads?|Football|Cricket|Both|None|3|1
+What is the length of a football field?|50–70m|90–120m|150m|200m|2|1
+Which sport did Muhammad Ali play?|Wrestling|Boxing|MMA|Karate|2|1
+Which country invented rugby?|USA|England|Australia|New Zealand|2|1

@@ -169,3 +169,168 @@ Q: What is the study of earthquakes?
 Correct Answer: 3
 ====================
 
+====================
+Player: Anfal
+Date: Wed Dec 10 15:26:56 2025
+Total Score: 48
+Total Questions Asked: 10
+Correct Questions:
+Q: Which metal is liquid at room temperature?
+1. Aluminum
+2. Mercury
+3. Iron
+4. Lead
+Correct Answer: 2
+Q: Which planet is closest to the Sun?
+1. Earth
+2. Venus
+3. Mercury
+4. Mars
+Correct Answer: 3
+Q: What is the hardest natural substance?
+1. Diamond
+2. Gold
+3. Iron
+4. Copper
+Correct Answer: 1
+Q: What is the freezing point of water?
+1. 0°C
+2. 10°C
+3. 50°C
+4. –10°C
+Correct Answer: 1
+Q: Which device measures temperature?
+1. Barometer
+2. Thermometer
+3. Hygrometer
+4. Altimeter
+Correct Answer: 2
+Q: What energy does food contain?
+1. Solar
+2. Kinetic
+3. Chemical
+4. Heat
+Correct Answer: 3
+Q: Which organ pumps blood?
+1. Brain
+2. Lungs
+3. Heart
+4. Kidneys
+Correct Answer: 3
+Q: Which organ helps you smell?
+1. Ear
+2. Nose
+3. Eye
+4. Skin
+Correct Answer: 2
+Incorrect Questions:
+Q: Humans breathe in which gas?
+1. Oxygen 2. Nitrogen 3. CO2 4. Hydrogen
+Correct Answer: 1
+Q: Which gas is essential for burning?
+1. Nitrogen 2. Oxygen 3. Helium 4. Neon
+Correct Answer: 2
+====================
+
+========================================
+Player: ki
+Date: Wed Dec 10 15:40:10 2025
+Total Score: 31
+Total Questions Asked: 10
+
+Correct Questions (5):
+Q: What is H2O commonly known as?
+1. Oxygen 2. Water 3. Hydrogen 4. Salt
+Correct Answer: 2
+
+Q: Which vitamin comes from sunlight?
+1. Vitamin A 2. Vitamin C 3. Vitamin D 4. Vitamin K
+Correct Answer: 3
+
+Q: Which device measures temperature?
+1. Barometer 2. Thermometer 3. Hygrometer 4. Altimeter
+Correct Answer: 2
+
+Q: What type of energy does the Sun produce?
+1. Chemical 2. Solar 3. Mechanical 4. Sound
+Correct Answer: 2
+
+Q: Which gas is essential for burning?
+1. Nitrogen 2. Oxygen 3. Helium 4. Neon
+Correct Answer: 2
+
+
+Incorrect Questions (5):
+Q: What part of the plant makes food?
+1. Root 2. Stem 3. Leaf 4. Flower
+Correct Answer: 3
+
+Q: What is the main function of red blood cells?
+1. Fight infection 2. Carry oxygen 3. Digest food 4. Store energy
+Correct Answer: 2
+
+Q: Humans breathe in which gas?
+1. Oxygen 2. Nitrogen 3. CO2 4. Hydrogen
+Correct Answer: 1
+
+Q: Which organ helps you smell?
+1. Ear 2. Nose 3. Eye 4. Skin
+Correct Answer: 2
+
+Q: Which organ pumps blood?
+1. Brain 2. Lungs 3. Heart 4. Kidneys
+Correct Answer: 3
+
+========================================
+
+========================================
+Player: ryt
+Date: Wed Dec 10 15:49:32 2025
+Total Score: 0
+Total Questions Asked: 10
+
+Correct Questions (2):
+Q: Humans breathe in which gas?
+1. Oxygen 2. Nitrogen 3. CO2 4. Hydrogen
+Correct Answer: 1
+
+Q: Which is the hottest planet?
+1. Venus 2. Earth 3. Mercury 4. Mars
+Correct Answer: 1
+
+
+Incorrect Questions (8):
+Q: Which organ pumps blood?
+1. Brain 2. Lungs 3. Heart 4. Kidneys
+Correct Answer: 3
+
+Q: What is the basic unit of life?
+1. Atom 2. Cell 3. Organ 4. Tissue
+Correct Answer: 2
+
+Q: What is the main function of red blood cells?
+1. Fight infection 2. Carry oxygen 3. Digest food 4. Store energy
+Correct Answer: 2
+
+Q: The Earth rotates on its?
+1. Orbit 2. Core 3. Axis 4. Mantle
+Correct Answer: 3
+
+Q: What is the largest organ of the human body?
+1. Heart 2. Brain 3. Skin 4. Liver
+Correct Answer: 3
+
+Q: Which gas is essential for burning?
+1. Nitrogen 2. Oxygen 3. Helium 4. Neon
+Correct Answer: 2
+
+Q: How many bones does an adult human have?
+1. 106 2. 206 3. 306 4. 406
+Correct Answer: 2
+
+Q: Which of these is NOT a state of matter?
+1. Solid 2. Liquid 3. Gas 4. Light
+Correct Answer: 4
+
+========================================
+
