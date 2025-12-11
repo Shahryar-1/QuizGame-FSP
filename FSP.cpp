@@ -1,3 +1,7 @@
+// This quiz game is a C++ console application that presents multiple-choice questions based on the user’s selected category and difficulty level. 
+// Questions are loaded from external files, selected randomly, and tracked to prevent repetition within a session. 
+// The game includes a timer, lifeline support, and a scoring mechanism that records correct and incorrect answers. Users can also contribute new questions, which the program writes to a file.
+//  The system uses structured data handling, file I/O, and basic validation to ensure smooth and reliable gameplay.
 #include <iostream>
 #include <fstream>
 #include <sstream>

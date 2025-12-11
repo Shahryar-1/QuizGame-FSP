@@ -334,3 +334,55 @@ Correct Answer: 4
 
 ========================================
 
+========================================
+Category: Science
+Player: Moeed
+Date: Wed Dec 10 20:13:33 2025
+Total Score: 52
+Total Questions Asked: 10
+
+Correct Questions (5):
+Q: What planet has the most moons?
+1. Earth 2. Mars 3. Jupiter 4. Venus
+Correct Answer: 3
+
+Q: Which planet has rings?
+1. Mars 2. Earth 3. Saturn 4. Venus
+Correct Answer: 3
+
+Q: The largest planet is?
+1. Earth 2. Jupiter 3. Saturn 4. Neptune
+Correct Answer: 2
+
+Q: Which gas is used in balloons?
+1. Oxygen 2. Helium 3. Nitrogen 4. Hydrogen
+Correct Answer: 2
+
+Q: Which animal is warm-blooded?
+1. Frog 2. Snake 3. Eagle 4. Lizard
+Correct Answer: 3
+
+
+Incorrect Questions (5):
+Q: What is the study of earthquakes?
+1. Meteorology 2. Geology 3. Seismology 4. Ecology
+Correct Answer: 3
+
+Q: What is Earth's outermost layer?
+1. Mantle 2. Core 3. Crust 4. Lithosphere
+Correct Answer: 3
+
+Q: What does the ozone layer protect us from?
+1. Rain 2. Dust 3. UV Rays 4. Sound
+Correct Answer: 3
+
+Q: Which organ stores bile?
+1. Pancreas 2. Liver 3. Gallbladder 4. Kidney
+Correct Answer: 3
+
+Q: Which part of the plant absorbs water?
+1. Leaf 2. Stem 3. Flower 4. Root
+Correct Answer: 4
+
+========================================
+
