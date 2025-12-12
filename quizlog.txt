@@ -386,3 +386,103 @@ Correct Answer: 4
 
 ========================================
 
+========================================
+Category: Computer
+Player: tufail
+Date: Thu Dec 11 17:16:16 2025
+Total Score: 6
+Total Questions Asked: 10
+
+Correct Questions (3):
+Q: Which device connects a network?
+1. Router 2. CPU 3. Mouse 4. Scanner
+Correct Answer: 1
+
+Q: ICT stands for?
+1. Info & Com Tech 2. Integrated Computer Tools 3. International Cyber Tech 4. Input Control Transfer
+Correct Answer: 1
+
+Q: Binary number system is based on?
+1. 2 2. 8 3. 10 4. 16
+Correct Answer: 1
+
+
+Incorrect Questions (6):
+Q: Which part performs calculations?
+1. CPU 2. GPU 3. ALU 4. RAM
+Correct Answer: 3
+
+Q: Which device is used for input?
+1. Monitor 2. Printer 3. Keyboard 4. Speaker
+Correct Answer: 3
+
+Q: Which is used for video calls?
+1. Scanner 2. Webcam 3. Printer 4. Plotter
+Correct Answer: 2
+
+Q: Which is a cloud storage service?
+1. YouTube 2. OneDrive 3. Gmail 4. Spotify
+Correct Answer: 2
+
+Q: Which is NOT an input device?
+1. Scanner 2. Mouse 3. Keyboard 4. Monitor
+Correct Answer: 4
+
+Q: Which of these is a search engine?
+1. Chrome 2. Google 3. Windows 4. Dell
+Correct Answer: 2
+
+========================================
+
+========================================
+Category: Science
+Player: qwrt
+Date: Fri Dec 12 12:34:09 2025
+Total Score: 2
+Total Questions Asked: 10
+
+Correct Questions (2):
+Q: Which is the hottest planet?
+1. Venus 2. Earth 3. Mercury 4. Mars
+Correct Answer: 1
+
+Q: What is the hardest natural substance?
+1. Diamond 2. Gold 3. Iron 4. Copper
+Correct Answer: 1
+
+
+Incorrect Questions (8):
+Q: Which planet is known as the Red Planet?
+1. Venus 2. Earth 3. Mars 4. Jupiter
+Correct Answer: 3
+
+Q: Which metal is liquid at room temperature?
+1. Aluminum 2. Mercury 3. Iron 4. Lead
+Correct Answer: 2
+
+Q: Which gas is most abundant in the atmosphere?
+1. Oxygen 2. Nitrogen 3. Hydrogen 4. Argon
+Correct Answer: 2
+
+Q: What gas do plants release during photosynthesis?
+1. Carbon dioxide 2. Oxygen 3. Nitrogen 4. Helium
+Correct Answer: 2
+
+Q: What is H2O commonly known as?
+1. Oxygen 2. Water 3. Hydrogen 4. Salt
+Correct Answer: 2
+
+Q: Which device measures temperature?
+1. Barometer 2. Thermometer 3. Hygrometer 4. Altimeter
+Correct Answer: 2
+
+Q: What part of the plant makes food?
+1. Root 2. Stem 3. Leaf 4. Flower
+Correct Answer: 3
+
+Q: Which organ pumps blood?
+1. Brain 2. Lungs 3. Heart 4. Kidneys
+Correct Answer: 3
+
+========================================
+
