@@ -1,7 +1,4 @@
-// This quiz game is a C++ console application that presents multiple-choice questions based on the user's selected category and difficulty level. 
-// Questions are loaded from external files, selected randomly, and tracked to prevent repetition within a session. 
-// The game includes a timer, lifeline support, and a scoring mechanism that records correct and incorrect answers. Users can also contribute new questions, which the program writes to a file.
-//  The system uses structured data handling, file I/O, and basic validation to ensure smooth and reliable gameplay.
+// Quiz Game - Fully Debugged Version
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -17,14 +14,14 @@ using namespace std;
 // ----------------------
 // Struct for MCQs
 // -----------------------
-struct MCQ 
+struct MCQ
 {
     string question, A, B, C, D;
     int correct;
 };
 
 //Struct for Highscore
-struct HighScore 
+struct HighScore
 {
     string name;
     int score;
@@ -39,15 +36,15 @@ int review(int);
 //=======================
 //====Review Questions===
 //=======================
-int review(int x) 
+int review(int x)
 {
     ifstream file("quizlog.txt");
-    if(!file) {
+    if (!file) {
         cout << "File not found!\n";
         return 0;
     }
     string line;
-    while(getline(file, line))
+    while (getline(file, line))
     {
         cout << line << endl;
     }
@@ -58,11 +55,10 @@ int review(int x)
 //=======================
 // HIGH SCORE FUNCTION
 //=======================
-int highscore(int x) 
+int highscore(int x)
 {
-    system("cls");
     ifstream file("highscore.txt");
-    if(!file) 
+    if (!file)
     {
         cout << "No high scores yet!\n";
         return 0;
@@ -71,7 +67,7 @@ int highscore(int x)
     cout << "\n========================================\n";
     cout << " TOP HIGH SCORES\n";
     cout << "========================================\n";
-    while(getline(file, line))
+    while (getline(file, line))
     {
         cout << line << endl;
     }
@@ -84,28 +80,24 @@ int highscore(int x)
 // MAIN FUNCTION
 // ----------------------
 int main()
- {
-    system("cls");
-    system("color 04");
-
+{
     int n;
-    cout<<"=======================================\n";
-    cout<<"==             Quiz Game             ==\n";
-    cout<<"==        Quiz Gaming Arena          ==\n";
-    cout<<"=======================================\n";
+    cout << "=======================================\n";
+    cout << "==             Quiz Game             ==\n";
+    cout << "==        Quiz Gaming Arena          ==\n";
+    cout << "=======================================\n";
     cout << "Press 1 to Start quiz" << endl;
     cout << "Press 2 to view High Score" << endl;
     cout << "Press 3 to Exit Game" << endl;
     cin >> n;
-    
-    if (n == 1) 
+
+    if (n == 1)
     {
         // Category Selection
         int category;
         string filename;
         string categoryName;
-        
-        system("cls");
+
         cout << "\nWelcome to the Quiz Game\n";
         cout << "Which Category you want?\n";
         cout << "Press 1 for Science\n";
@@ -115,7 +107,7 @@ int main()
         cout << "Press 5 for IQ/Logic\n";
         cout << "Your choice: ";
         cin >> category;
-        
+
         if (category == 1) {
             filename = "science.txt";
             categoryName = "Science";
@@ -140,16 +132,15 @@ int main()
             cout << "\n[ERROR] Invalid category choice!\n";
             return 0;
         }
-        
+
         // Start Quiz
         int difficulty;
         string name;
-        
+
         // Get current date and time
         time_t now = time(0);
         tm* ltm = localtime(&now);
-        
-        system("cls");
+
         cout << "\n========================================\n";
         cout << " " << categoryName << " QUIZ CHALLENGE\n";
         cout << "========================================\n";
@@ -159,38 +150,36 @@ int main()
         cout << "Enter your Name: ";
         cin.ignore();
         getline(cin, name);
-        
-        system("cls");
+
         cout << "\nSelect Difficulty Level:\n";
         cout << "1. Easy\n2. Medium\n3. Hard\n";
         cout << "Your choice: ";
         cin >> difficulty;
-        
+
         if (difficulty < 1 || difficulty > 3) {
             cout << "\n[ERROR] Invalid difficulty level!\n";
             return 0;
         }
-        
+
         const int MAX = 100;
         MCQ questions[MAX], incorrect[MAX], correct[MAX];
         int count = 0, wrongcount = 0, rightcount = 0;
-        
+
         ifstream file(filename);
         if (!file) {
             cout << "\n[ERROR] File '" << filename << "' not found!\n";
             return 0;
         }
-        
+
         // Load questions based on difficulty
         string line;
-        while (getline(file, line) && count < MAX)
-        {
+        while (getline(file, line) && count < MAX) {
             if (line.empty()) continue;
-            
+
             stringstream ss(line);
             MCQ temp;
             string correctStr, diffStr;
-            
+
             getline(ss, temp.question, '|');
             getline(ss, temp.A, '|');
             getline(ss, temp.B, '|');
@@ -198,37 +187,35 @@ int main()
             getline(ss, temp.D, '|');
             getline(ss, correctStr, '|');
             getline(ss, diffStr, '|');
-            
+
             temp.correct = stoi(correctStr);
             int questionDiff = stoi(diffStr);
-            
-            if (questionDiff == difficulty) 
-            {
+
+            if (questionDiff == difficulty) {
                 questions[count++] = temp;
             }
         }
         file.close();
-        
+
         if (count == 0) {
             cout << "\n[ERROR] No questions found for this difficulty level!\n";
             return 0;
         }
-        
+
         srand(time(0));
         int totalAsked = (count < 10) ? count : 10;
         int score = 0;
         int totalPoints = 0;
-        bool usedIndex[MAX] = {false};
-        
+        bool usedIndex[MAX] = { false };
+
         // Lifeline flags
         bool usedReplace = false, usedSkip = false, used5050 = false, usedExtraTime = false;
-        
+
         // Points system based on difficulty
         int basePoints = (difficulty == 1) ? 5 : (difficulty == 2) ? 10 : 15;
         int bonusPoints = (difficulty == 1) ? 2 : (difficulty == 2) ? 5 : 8;
         int penaltyPoints = (difficulty == 1) ? 2 : (difficulty == 2) ? 3 : 5;
-        
-        system("cls");
+
         cout << "\n========================================\n";
         cout << " SCORING SYSTEM\n";
         cout << "========================================\n";
@@ -240,7 +227,7 @@ int main()
         cout << "Quiz Starting! Total Questions: " << totalAsked << "\n";
         cout << "========================================\n";
         Sleep(3000);
-        
+
         for (int i = 0; i < totalAsked; i++) {
             // Select random unused question
             int index;
@@ -248,14 +235,14 @@ int main()
                 index = rand() % count;
             } while (usedIndex[index]);
             usedIndex[index] = true;
-            
+
             MCQ q = questions[index];
             int secondsAllowed = 10;
             bool questionAnswered = false;
-            
+
             while (!questionAnswered) {
                 system("cls");
-                
+
                 // Display question
                 cout << "\n========================================\n";
                 cout << "Question " << i + 1 << " of " << totalAsked << " | Total Points: " << totalPoints << "\n";
@@ -265,7 +252,7 @@ int main()
                 cout << "2. " << q.B << "\n";
                 cout << "3. " << q.C << "\n";
                 cout << "4. " << q.D << "\n";
-                
+
                 // Display available lifelines
                 cout << "\n--- Lifelines Available ---\n";
                 if (!usedReplace) cout << "0. Replace Question\n";
@@ -273,17 +260,17 @@ int main()
                 if (!used5050) cout << "6. 50-50\n";
                 if (!usedExtraTime) cout << "7. Extra 10 Seconds\n";
                 cout << "---------------------------\n";
-                
+
                 cout << "\nTime Limit: " << secondsAllowed << " seconds\n";
                 cout << "Potential Points: " << basePoints << " (+" << bonusPoints << " if fast)\n";
                 cout << "Your answer (1-4 or lifeline): ";
-                
+
                 // Timer implementation
                 int remaining = secondsAllowed;
                 int anss = -1;
                 bool inputReceived = false;
                 auto startTime = chrono::steady_clock::now();
-                
+
                 while (remaining > 0) {
                     if (_kbhit()) {
                         char ch = _getch();
@@ -294,22 +281,21 @@ int main()
                             break;
                         }
                     }
-                    
+
                     auto currentTime = chrono::steady_clock::now();
                     auto elapsed = chrono::duration_cast<chrono::seconds>(currentTime - startTime).count();
                     int newRemaining = secondsAllowed - elapsed;
-                    
+
                     if (newRemaining != remaining) {
                         remaining = newRemaining;
-                        cout << "\rTime remaining: " << remaining << " seconds " << flush;
                     }
                     Sleep(100);
                 }
-                
+
                 // Calculate time taken for scoring
                 auto endTime = chrono::steady_clock::now();
                 int timeTaken = chrono::duration_cast<chrono::seconds>(endTime - startTime).count();
-                
+
                 // Time's up
                 if (!inputReceived) {
                     int penalty = penaltyPoints / 2;
@@ -323,7 +309,7 @@ int main()
                     questionAnswered = true;
                     continue;
                 }
-                
+
                 // Handle lifelines and answers
                 if (anss == 0) {
                     if (usedReplace) {
@@ -349,8 +335,7 @@ int main()
                     Sleep(1500);
                     questionAnswered = true;
                 }
-                else if (anss == 6) 
-                {
+                else if (anss == 6) {
                     if (used5050) {
                         cout << "\n[ERROR] 50-50 lifeline already used!\n";
                         Sleep(1500);
@@ -359,29 +344,28 @@ int main()
                     used5050 = true;
                     cout << "\n[LIFELINE] 50-50 activated!\n";
                     cout << "\nRemaining options:\n";
-                    
-                    if (q.correct == 1 || q.correct == 3) 
-                    {
+
+                    if (q.correct == 1 || q.correct == 3) {
                         cout << "1. " << q.A << "\n3. " << q.C << "\n";
-                    } else {
+                    }
+                    else {
                         cout << "2. " << q.B << "\n4. " << q.D << "\n";
                     }
-                    
+
                     cout << "\nYour answer (1-4): ";
                     char choice = _getch();
                     anss = choice - '0';
                     cout << choice << endl;
-                    
+
                     if (anss < 1 || anss > 4) {
                         cout << "\n[ERROR] Invalid input!\n";
                         Sleep(1500);
                         continue;
                     }
+                    // Fall through to answer checking
                 }
-                else if (anss == 7) 
-                {
-                    if (usedExtraTime) 
-                    {
+                else if (anss == 7) {
+                    if (usedExtraTime) {
                         cout << "\n[ERROR] Extra Time lifeline already used!\n";
                         Sleep(1500);
                         continue;
@@ -392,27 +376,25 @@ int main()
                     Sleep(1500);
                     continue;
                 }
-                
+
                 // Check answer
-                if (anss >= 1 && anss <= 4)
-                {
-                    if (anss == q.correct) 
-                    {
+                if (anss >= 1 && anss <= 4) {
+                    if (anss == q.correct) {
                         int pointsEarned = basePoints;
-                        if (timeTaken <= 5) 
-                        {
+                        if (timeTaken <= 5) {
                             pointsEarned += bonusPoints;
                             cout << "\nCORRECT! Well done! FAST BONUS!\n";
                             cout << "Points Earned: " << basePoints << " + " << bonusPoints << " = " << pointsEarned << "\n";
-                        } else 
-                        {
+                        }
+                        else {
                             cout << "\nCORRECT! Well done!\n";
                             cout << "Points Earned: " << pointsEarned << "\n";
                         }
                         totalPoints += pointsEarned;
                         correct[rightcount++] = q;
                         score++;
-                    } else {
+                    }
+                    else {
                         cout << "\nWRONG! Correct answer was: " << q.correct << "\n";
                         cout << "Penalty: -" << penaltyPoints << " points\n";
                         totalPoints -= penaltyPoints;
@@ -422,15 +404,16 @@ int main()
                     cout << "Current Total: " << totalPoints << " points\n";
                     Sleep(3000);
                     questionAnswered = true;
-                } else {
+                }
+                else {
                     cout << "\n[ERROR] Invalid input!\n";
                     Sleep(1500);
                 }
             }
         }
-        
+
         int maxPossiblePoints = totalAsked * (basePoints + bonusPoints);
-        
+
         // Display Results
         system("cls");
         cout << "\n========================================\n";
@@ -451,7 +434,7 @@ int main()
         cout << "Total Points Earned: " << totalPoints << "\n";
         cout << "Maximum Possible: " << maxPossiblePoints << "\n";
         cout << "========================================\n";
-        
+
         // High Score System
         HighScore highScores[5];
         int highscorer = 0;
@@ -459,60 +442,53 @@ int main()
         // Read existing high scores
         ifstream inFile("highscore.txt");
         if (inFile) {
-            while (highscorer < 5 && inFile >> highScores[highscorer].name >> highScores[highscorer].score) 
-            {
+            while (highscorer < 5 && inFile >> highScores[highscorer].name >> highScores[highscorer].score) {
                 highscorer++;
             }
             inFile.close();
         }
-        
+
         // Check if current score qualifies for high score list
         bool isHighScore = false;
         int position = -1;
-        
-        if (highscorer < 5)
-        {
+
+        if (highscorer < 5) {
             isHighScore = true;
             position = highscorer;
-        } else {
-            for (int i = 0; i < 5; i++) 
-            {
-                if (totalPoints > highScores[i].score) 
-                {
+        }
+        else {
+            for (int i = 0; i < 5; i++) {
+                if (totalPoints > highScores[i].score) {
                     isHighScore = true;
                     position = i;
                     break;
                 }
             }
         }
-        
-        if (isHighScore) 
-        {
+
+        if (isHighScore) {
             cout << "\nCONGRATULATIONS! NEW HIGH SCORE!\n";
             cout << "You ranked #" << position + 1 << " in the leaderboard!\n";
-            
+
             // Insert new high score at correct position
-            for (int i = 4; i > position; i--) 
-            {
-                if (i - 1 < highscorer) 
-                {
+            for (int i = 4; i > position; i--) {
+                if (i - 1 < highscorer) {
                     highScores[i] = highScores[i - 1];
                 }
             }
             highScores[position].name = name;
             highScores[position].score = totalPoints;
             if (highscorer < 5) highscorer++;
-            
+
             // Write updated high scores to file
             ofstream outFile("highscore.txt");
-            for (int i = 0; i < highscorer; i++) 
-            {
+            for (int i = 0; i < highscorer; i++) {
                 outFile << highScores[i].name << " " << highScores[i].score << "\n";
             }
             outFile.close();
             cout << "Your score has been saved!\n";
         }
-        
+
         // Display High Scores
         cout << "\n========================================\n";
         cout << " TOP 5 HIGH SCORES\n";
@@ -521,15 +497,15 @@ int main()
             cout << i + 1 << ". " << highScores[i].name << " - " << highScores[i].score << " points\n";
         }
         cout << "========================================\n";
-        
-        // Lifelines used summary
-        cout << "\nLIFELINES USED:\n";
-        cout << (usedReplace ? " Yes" : " No") << " - Replace Question\n";
-        cout << (usedSkip ? " Yes" : " No") << " - Skip Without Penalty\n";
-        cout << (used5050 ? " Yes" : " No") << " - 50-50\n";
-        cout << (usedExtraTime ? " Yes" : "No") << " - Extra Time\n";
-        cout << "========================================\n";
-        
+
+        // Lifelines summary
+        cout << "\n--- Lifelines Used ---\n";
+        cout << (usedReplace ? "[X]" : "[ ]") << " Replace Question\n";
+        cout << (usedSkip ? "[X]" : "[ ]") << " Skip Without Penalty\n";
+        cout << (used5050 ? "[X]" : "[ ]") << " 50-50\n";
+        cout << (usedExtraTime ? "[X]" : "[ ]") << " Extra Time\n";
+        cout << "----------------------\n";
+
         // Review wrong answers
         if (wrongcount > 0) {
             int choice;
@@ -537,41 +513,40 @@ int main()
             cout << "1. Yes\n2. No\n";
             cout << "Your choice: ";
             cin >> choice;
-            
-            if (choice == 1) 
-            {
+
+            if (choice == 1) {
                 system("cls");
                 cout << "\n========================================\n";
                 cout << " INCORRECT ANSWERS REVIEW\n";
-                cout << "========================================\n";
-                for (int i = 0; i < wrongcount; i++) 
-                {
+                cout << "========================================\n\n";
+
+                for (int i = 0; i < wrongcount; i++) {
                     MCQ q = incorrect[i];
-                    cout << "\nQuestion " << i + 1 << ": " << q.question << "\n";
+                    cout << "Question " << i + 1 << ": " << q.question << "\n\n";
                     cout << "1. " << q.A << "\n";
                     cout << "2. " << q.B << "\n";
                     cout << "3. " << q.C << "\n";
-                    cout << "4. " << q.D << "\n";
+                    cout << "4. " << q.D << "\n\n";
                     cout << "Correct Answer: " << q.correct << "\n";
-                    cout << "----------------------------------------\n";
+                    cout << "----------------------------------------\n\n";
                 }
-                cout << "\nPress any key to continue...";
+                cout << "Press any key to continue...";
                 _getch();
             }
         }
-        
-        system("cls");
+
         int want;
         cout << "\nDo you want to save a review of your Quiz?\n";
         cout << "1. Yes\n2. No\n";
+        cout << "Your choice: ";
         cin >> want;
-        
+
         if (want == 1) {
             ofstream logFile("quizlog.txt", ios::app);
             if (logFile) {
                 time_t now2 = time(0);
                 string dt = ctime(&now2);
-                
+
                 logFile << "========================================\n";
                 logFile << "Category: " << categoryName << "\n";
                 logFile << "Player: " << name << "\n";
@@ -585,7 +560,7 @@ int main()
                     logFile << "1. " << q.A << " 2. " << q.B << " 3. " << q.C << " 4. " << q.D << "\n";
                     logFile << "Correct Answer: " << q.correct << "\n\n";
                 }
-                
+
                 logFile << "\nIncorrect Questions (" << wrongcount << "):\n";
                 for (int i = 0; i < wrongcount; i++) {
                     MCQ q = incorrect[i];
@@ -595,61 +570,66 @@ int main()
                 }
                 logFile << "========================================\n\n";
                 logFile.close();
-                cout << "\n✓ Your quiz has been logged in quizlog.txt\n";
-            } else {
+                cout << "\nYour quiz has been logged in quizlog.txt\n";
+            }
+            else {
                 cout << "\n[ERROR] Could not save quiz log!\n";
             }
         }
-        
-        system("cls");
+
         int suggest;
         cout << "\nDo you want to suggest a question?\n";
         cout << "1. Yes\n2. No\n";
+        cout << "Your choice: ";
         cin >> suggest;
-        
+
         if (suggest == 1) {
-            ofstream file("suggestion.txt", ios::app);
-            if (!file) {
+            ofstream sugFile("suggestion.txt", ios::app);
+            if (!sugFile) {
                 cout << "\n[ERROR] Could not open suggestions file!\n";
-            } else {
+            }
+            else {
                 cin.ignore();
                 string question;
                 cout << "\nEnter your question: ";
                 getline(cin, question);
-                
+
                 time_t now3 = time(0);
-                string dt = ctime(&now3);
-                
-                file << "----------------------------------------\n";
-                file << "Category: " << categoryName << "\n";
-                file << "Submitted by: " << name << "\n";
-                file << "Date: " << dt;
-                file << "Question: " << question << "\n";
-                file << "----------------------------------------\n\n";
-                
-                cout << "\n✓ Your question has been saved successfully!\n";
+                string dt2 = ctime(&now3);
+
+                sugFile << "----------------------------------------\n";
+                sugFile << "Category: " << categoryName << "\n";
+                sugFile << "Submitted by: " << name << "\n";
+                sugFile << "Date: " << dt2;
+                sugFile << "Question: " << question << "\n";
+                sugFile << "----------------------------------------\n\n";
+
+                cout << "\nYour question has been saved successfully!\n";
                 cout << "Thank you for your contribution!\n";
-                file.close();
+                sugFile.close();
             }
         }
-        
-        system("cls");
+
         int visit;
         cout << "\nDo you want to visit the high scorers list?\n";
         cout << "1. Yes\n2. No\n";
+        cout << "Your choice: ";
         cin >> visit;
-        
+
         if (visit == 1) {
+            system("cls");
             highscore(visit);
         }
-        
+
         cout << "\n========================================\n";
-        cout << " Thanks for playing! Have a nice day!\n";
+        cout << " Thanks for playing!\n";
+        cout << " Have a nice day!\n";
         cout << "========================================\n";
         cout << "\nPress any key to return to main menu...";
         _getch();
     }
     else if (n == 2) {
+        system("cls");
         highscore(n);
         cout << "\nPress any key to continue...";
         _getch();
@@ -657,6 +637,6 @@ int main()
     else if (n == 3) {
         cout << "Exiting...\n";
     }
-    
+
     return 0;
 }
