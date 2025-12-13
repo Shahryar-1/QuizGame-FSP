@@ -1,4 +1,4 @@
-// Quiz Game - Fully Debugged Version
+// Quiz Game - Without Struct Version
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -10,22 +10,6 @@
 #include <chrono>
 
 using namespace std;
-
-// ----------------------
-// Struct for MCQs
-// -----------------------
-struct MCQ
-{
-    string question, A, B, C, D;
-    int correct;
-};
-
-//Struct for Highscore
-struct HighScore
-{
-    string name;
-    int score;
-};
 
 // ----------------------
 // Function Declarations
@@ -81,6 +65,7 @@ int highscore(int x)
 // ----------------------
 int main()
 {
+ 
     int n;
     cout << "=======================================\n";
     cout << "==             Quiz Game             ==\n";
@@ -162,7 +147,18 @@ int main()
         }
 
         const int MAX = 100;
-        MCQ questions[MAX], incorrect[MAX], correct[MAX];
+        // Arrays for questions
+        string questions[MAX], optionA[MAX], optionB[MAX], optionC[MAX], optionD[MAX];
+        int correctAnswer[MAX];
+        
+        // Arrays for incorrect questions
+        string incorrectQ[MAX], incorrectA[MAX], incorrectB[MAX], incorrectC[MAX], incorrectD[MAX];
+        int incorrectCorrect[MAX];
+        
+        // Arrays for correct questions
+        string correctQ[MAX], correctA[MAX], correctB[MAX], correctC[MAX], correctD[MAX];
+        int correctCorrect[MAX];
+        
         int count = 0, wrongcount = 0, rightcount = 0;
 
         ifstream file(filename);
@@ -177,22 +173,27 @@ int main()
             if (line.empty()) continue;
 
             stringstream ss(line);
-            MCQ temp;
-            string correctStr, diffStr;
+            string tempQ, tempA, tempB, tempC, tempD, correctStr, diffStr;
 
-            getline(ss, temp.question, '|');
-            getline(ss, temp.A, '|');
-            getline(ss, temp.B, '|');
-            getline(ss, temp.C, '|');
-            getline(ss, temp.D, '|');
+            getline(ss, tempQ, '|');
+            getline(ss, tempA, '|');
+            getline(ss, tempB, '|');
+            getline(ss, tempC, '|');
+            getline(ss, tempD, '|');
             getline(ss, correctStr, '|');
             getline(ss, diffStr, '|');
 
-            temp.correct = stoi(correctStr);
+            int tempCorrect = stoi(correctStr);
             int questionDiff = stoi(diffStr);
 
             if (questionDiff == difficulty) {
-                questions[count++] = temp;
+                questions[count] = tempQ;
+                optionA[count] = tempA;
+                optionB[count] = tempB;
+                optionC[count] = tempC;
+                optionD[count] = tempD;
+                correctAnswer[count] = tempCorrect;
+                count++;
             }
         }
         file.close();
@@ -236,7 +237,6 @@ int main()
             } while (usedIndex[index]);
             usedIndex[index] = true;
 
-            MCQ q = questions[index];
             int secondsAllowed = 10;
             bool questionAnswered = false;
 
@@ -247,11 +247,11 @@ int main()
                 cout << "\n========================================\n";
                 cout << "Question " << i + 1 << " of " << totalAsked << " | Total Points: " << totalPoints << "\n";
                 cout << "========================================\n";
-                cout << q.question << "\n\n";
-                cout << "1. " << q.A << "\n";
-                cout << "2. " << q.B << "\n";
-                cout << "3. " << q.C << "\n";
-                cout << "4. " << q.D << "\n";
+                cout << questions[index] << "\n\n";
+                cout << "1. " << optionA[index] << "\n";
+                cout << "2. " << optionB[index] << "\n";
+                cout << "3. " << optionC[index] << "\n";
+                cout << "4. " << optionD[index] << "\n";
 
                 // Display available lifelines
                 cout << "\n--- Lifelines Available ---\n";
@@ -302,9 +302,17 @@ int main()
                     totalPoints -= penalty;
                     if (totalPoints < 0) totalPoints = 0;
                     cout << "\n\n[TIME'S UP!] -" << penalty << " points penalty\n";
-                    cout << "Correct answer was: " << q.correct << "\n";
+                    cout << "Correct answer was: " << correctAnswer[index] << "\n";
                     cout << "Moving to next question...\n";
-                    incorrect[wrongcount++] = q;
+                    
+                    incorrectQ[wrongcount] = questions[index];
+                    incorrectA[wrongcount] = optionA[index];
+                    incorrectB[wrongcount] = optionB[index];
+                    incorrectC[wrongcount] = optionC[index];
+                    incorrectD[wrongcount] = optionD[index];
+                    incorrectCorrect[wrongcount] = correctAnswer[index];
+                    wrongcount++;
+                    
                     Sleep(2000);
                     questionAnswered = true;
                     continue;
@@ -345,11 +353,11 @@ int main()
                     cout << "\n[LIFELINE] 50-50 activated!\n";
                     cout << "\nRemaining options:\n";
 
-                    if (q.correct == 1 || q.correct == 3) {
-                        cout << "1. " << q.A << "\n3. " << q.C << "\n";
+                    if (correctAnswer[index] == 1 || correctAnswer[index] == 3) {
+                        cout << "1. " << optionA[index] << "\n3. " << optionC[index] << "\n";
                     }
                     else {
-                        cout << "2. " << q.B << "\n4. " << q.D << "\n";
+                        cout << "2. " << optionB[index] << "\n4. " << optionD[index] << "\n";
                     }
 
                     cout << "\nYour answer (1-4): ";
@@ -379,7 +387,7 @@ int main()
 
                 // Check answer
                 if (anss >= 1 && anss <= 4) {
-                    if (anss == q.correct) {
+                    if (anss == correctAnswer[index]) {
                         int pointsEarned = basePoints;
                         if (timeTaken <= 5) {
                             pointsEarned += bonusPoints;
@@ -391,15 +399,30 @@ int main()
                             cout << "Points Earned: " << pointsEarned << "\n";
                         }
                         totalPoints += pointsEarned;
-                        correct[rightcount++] = q;
+                        
+                        correctQ[rightcount] = questions[index];
+                        correctA[rightcount] = optionA[index];
+                        correctB[rightcount] = optionB[index];
+                        correctC[rightcount] = optionC[index];
+                        correctD[rightcount] = optionD[index];
+                        correctCorrect[rightcount] = correctAnswer[index];
+                        rightcount++;
+                        
                         score++;
                     }
                     else {
-                        cout << "\nWRONG! Correct answer was: " << q.correct << "\n";
+                        cout << "\nWRONG! Correct answer was: " << correctAnswer[index] << "\n";
                         cout << "Penalty: -" << penaltyPoints << " points\n";
                         totalPoints -= penaltyPoints;
                         if (totalPoints < 0) totalPoints = 0;
-                        incorrect[wrongcount++] = q;
+                        
+                        incorrectQ[wrongcount] = questions[index];
+                        incorrectA[wrongcount] = optionA[index];
+                        incorrectB[wrongcount] = optionB[index];
+                        incorrectC[wrongcount] = optionC[index];
+                        incorrectD[wrongcount] = optionD[index];
+                        incorrectCorrect[wrongcount] = correctAnswer[index];
+                        wrongcount++;
                     }
                     cout << "Current Total: " << totalPoints << " points\n";
                     Sleep(3000);
@@ -435,14 +458,15 @@ int main()
         cout << "Maximum Possible: " << maxPossiblePoints << "\n";
         cout << "========================================\n";
 
-        // High Score System
-        HighScore highScores[5];
+        // High Score System - Using arrays instead of struct
+        string highScoreNames[5];
+        int highScorePoints[5];
         int highscorer = 0;
         
         // Read existing high scores
         ifstream inFile("highscore.txt");
         if (inFile) {
-            while (highscorer < 5 && inFile >> highScores[highscorer].name >> highScores[highscorer].score) {
+            while (highscorer < 5 && inFile >> highScoreNames[highscorer] >> highScorePoints[highscorer]) {
                 highscorer++;
             }
             inFile.close();
@@ -458,7 +482,7 @@ int main()
         }
         else {
             for (int i = 0; i < 5; i++) {
-                if (totalPoints > highScores[i].score) {
+                if (totalPoints > highScorePoints[i]) {
                     isHighScore = true;
                     position = i;
                     break;
@@ -473,17 +497,18 @@ int main()
             // Insert new high score at correct position
             for (int i = 4; i > position; i--) {
                 if (i - 1 < highscorer) {
-                    highScores[i] = highScores[i - 1];
+                    highScoreNames[i] = highScoreNames[i - 1];
+                    highScorePoints[i] = highScorePoints[i - 1];
                 }
             }
-            highScores[position].name = name;
-            highScores[position].score = totalPoints;
+            highScoreNames[position] = name;
+            highScorePoints[position] = totalPoints;
             if (highscorer < 5) highscorer++;
 
             // Write updated high scores to file
             ofstream outFile("highscore.txt");
             for (int i = 0; i < highscorer; i++) {
-                outFile << highScores[i].name << " " << highScores[i].score << "\n";
+                outFile << highScoreNames[i] << " " << highScorePoints[i] << "\n";
             }
             outFile.close();
             cout << "Your score has been saved!\n";
@@ -494,7 +519,7 @@ int main()
         cout << " TOP 5 HIGH SCORES\n";
         cout << "========================================\n";
         for (int i = 0; i < highscorer; i++) {
-            cout << i + 1 << ". " << highScores[i].name << " - " << highScores[i].score << " points\n";
+            cout << i + 1 << ". " << highScoreNames[i] << " - " << highScorePoints[i] << " points\n";
         }
         cout << "========================================\n";
 
@@ -521,13 +546,12 @@ int main()
                 cout << "========================================\n\n";
 
                 for (int i = 0; i < wrongcount; i++) {
-                    MCQ q = incorrect[i];
-                    cout << "Question " << i + 1 << ": " << q.question << "\n\n";
-                    cout << "1. " << q.A << "\n";
-                    cout << "2. " << q.B << "\n";
-                    cout << "3. " << q.C << "\n";
-                    cout << "4. " << q.D << "\n\n";
-                    cout << "Correct Answer: " << q.correct << "\n";
+                    cout << "Question " << i + 1 << ": " << incorrectQ[i] << "\n\n";
+                    cout << "1. " << incorrectA[i] << "\n";
+                    cout << "2. " << incorrectB[i] << "\n";
+                    cout << "3. " << incorrectC[i] << "\n";
+                    cout << "4. " << incorrectD[i] << "\n\n";
+                    cout << "Correct Answer: " << incorrectCorrect[i] << "\n";
                     cout << "----------------------------------------\n\n";
                 }
                 cout << "Press any key to continue...";
@@ -555,18 +579,16 @@ int main()
                 logFile << "Total Questions Asked: " << totalAsked << "\n";
                 logFile << "\nCorrect Questions (" << rightcount << "):\n";
                 for (int i = 0; i < rightcount; i++) {
-                    MCQ q = correct[i];
-                    logFile << "Q: " << q.question << "\n";
-                    logFile << "1. " << q.A << " 2. " << q.B << " 3. " << q.C << " 4. " << q.D << "\n";
-                    logFile << "Correct Answer: " << q.correct << "\n\n";
+                    logFile << "Q: " << correctQ[i] << "\n";
+                    logFile << "1. " << correctA[i] << " 2. " << correctB[i] << " 3. " << correctC[i] << " 4. " << correctD[i] << "\n";
+                    logFile << "Correct Answer: " << correctCorrect[i] << "\n\n";
                 }
 
                 logFile << "\nIncorrect Questions (" << wrongcount << "):\n";
                 for (int i = 0; i < wrongcount; i++) {
-                    MCQ q = incorrect[i];
-                    logFile << "Q: " << q.question << "\n";
-                    logFile << "1. " << q.A << " 2. " << q.B << " 3. " << q.C << " 4. " << q.D << "\n";
-                    logFile << "Correct Answer: " << q.correct << "\n\n";
+                    logFile << "Q: " << incorrectQ[i] << "\n";
+                    logFile << "1. " << incorrectA[i] << " 2. " << incorrectB[i] << " 3. " << incorrectC[i] << " 4. " << incorrectD[i] << "\n";
+                    logFile << "Correct Answer: " << incorrectCorrect[i] << "\n\n";
                 }
                 logFile << "========================================\n\n";
                 logFile.close();
